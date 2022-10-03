@@ -1,10 +1,20 @@
+import CheckIcon from "@mui/icons-material/Check";
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import { CustomButton } from "../src/components";
 
 const Home: NextPage = () => {
-  return <h1> Boilerapp </h1>;
+  return (
+    <div>
+      <h1> Boilerplate </h1>
+      <CustomButton
+        sx={{ borderRadius: 4 }}
+        icon={<CheckIcon />}
+        label={"Button Example"}
+        color={"secondary"}
+        onClick={() => {console.log("Hi")}}
+      />
+    </div>
+  );
 };
 
 export default Home;

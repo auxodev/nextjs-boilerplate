@@ -15,8 +15,16 @@
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "latest",
     "@mui/icons-material": "latest",
+    "@mui/lab": "latest",
     "@mui/material": "latest",
+    "@mui/styles": "latest",
+    "@emotion/react": "latest",
+    "@emotion/cache": "latest",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
     "firebase": "latest",
     "next": "latest",
     "react": "latest",
