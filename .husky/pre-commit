@@ -1,0 +1,42 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+echo ':edificio_en_construcción::obrero_de_la_construcción: Styling, testing and building your project before committing'
+# Prettier write
+npm run format ||
+(
+    echo ':cara_de_asco::cara_vomitando::cara_de_asco::cara_vomitando: Its F**KING RAW - Your styling looks disgusting. :cara_de_asco::cara_vomitando::cara_de_asco::cara_vomitando:
+            Prettier Check Failed. Run npm run format, add changes and try commit again.';
+    false;
+)
+# Check Prettier standards
+npm run check-format ||
+(
+    echo ':cara_de_asco::cara_vomitando::cara_de_asco::cara_vomitando: Its F**KING RAW - Your styling looks disgusting. :cara_de_asco::cara_vomitando::cara_de_asco::cara_vomitando:
+            Prettier Check Failed. Run npm run format, add changes and try commit again.';
+    false;
+)
+# Check ESLint Standards
+npm run check-lint ||
+(
+        echo ':triunfo::baloncesto::hola::triunfo: Get that weak s**t out of here! :triunfo::baloncesto::hola::triunfo:
+                ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+        false;
+)
+# Check tsconfig standards
+npm run check-types ||
+(
+    echo ':cara_payaso::alegría::x::cara_payaso: Failed Type check. :cara_payaso::alegría::x::cara_payaso:
+            Are you seriously trying to write that? Make the changes required above.'
+    false;
+)
+# If everything passes... Now we can commit
+echo ':cara_pensativa::cara_pensativa::cara_pensativa::cara_pensativa:... Alright... Code looks good to me... Trying to build now. :cara_pensativa::cara_pensativa::cara_pensativa::cara_pensativa:'
+npm run build ||
+(
+    echo ':x::obrero_de_la_construcción::martillo::x: Better call Bob... Because your build failed :x::obrero_de_la_construcción::martillo::x:
+            Next build failed: View the errors above to see why.
+    '
+    false;
+)
+# If everything passes... Now we can commit
+echo ':marca_de_verificación_blanca::marca_de_verificación_blanca::marca_de_verificación_blanca::marca_de_verificación_blanca: You win this time... I am committing this now. :marca_de_verificación_blanca::marca_de_verificación_blanca::marca_de_verificación_blanca::marca_de_verificación_blanca:'
