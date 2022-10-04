@@ -11,7 +11,9 @@ const Home: NextPage = () => {
         icon={<CheckIcon />}
         label={"Button Example"}
         color={"secondary"}
-        onClick={() => {console.log("Hi")}}
+        onClick={() => {
+          console.log("Hi");
+        }}
       />
     </div>
   );
